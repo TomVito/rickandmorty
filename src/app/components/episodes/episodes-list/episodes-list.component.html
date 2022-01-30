@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-12"></div>
+      <h1 class="text-center mt-4 mb-5 text-white">Episodes</h1>
+</div>
+
+<div class="row">
+    <div class="col-6 mb-3 text-white">
+      <p>Number of episodes: {{ episodesInfo.count }} | Current page: {{page}}/ {{ episodesInfo.pages }} </p>
+      <app-search-form (onFormSubmit)="filterEpisodes($event)"></app-search-form>
+    </div>
+    <div class="col-6 text-end mt-4">
+        <app-pagination></app-pagination>
+    </div>
+</div>
+
+<div class="row">
+    <!-- TODO: Neturime episode service, kad galetume gauti duomenis apie epizoda -->
+    <!-- Si dalis galetu buti atskiras komponentas atvaizduoti epizodams -->
+    <!-- Šiame komponente negalime pasiekti character kintamojo, turime ji perduoti per @Input
+    Dokumentacija, kaip perduoti informacija i kita komponenta parent >> child: https://angular.io/guide/inputs-outputs
+    -->
+    <!-- <app-episode-card class="col-sm-4" *ngFor="let episode of episodes" [episodeUrl]="episode"></app-episode-card> -->
+    <div class="col-sm-4" *ngFor="let episode of episodes">
+        <div class="card mb-3">
+            <div class="card-header">
+            <h3> {{ episode.name }} </h3> 
+            </div>
+            <div class="card-body">
+                <div>
+                    {{ episode.episode }}
+                </div>
+                <div>
+                    {{ episode.air_date }}
+                </div>
+                <div>
+                    Characters: {{ episode.characters.length }}
+                </div>
+            </div>
+            <div class="card-footer">
+                <div>
+                    <a class="btn btn-success mt-2" [routerLink]="['/episodes', episode.id]">
+                        View More
+                    </a> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

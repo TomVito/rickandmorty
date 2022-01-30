@@ -1,0 +1,22 @@
+<div class="card mb-3">
+    <div class="card-body">
+      <div>
+        <!-- TODO: padaryti, kad paspaudus ant epizodo pavadinimo, nuvestu į epizodo puslapį -->
+        <h3>
+          {{ episode.name }}
+        </h3>
+      </div>
+      <div>
+        {{ episode.episode }}
+      </div>
+      <div>
+        Date: {{ episode.air_date }}
+      </div>
+      <div>
+        Characters: {{ episode.characters.length }}
+      </div>
+    </div>
+    <div class="card-footer text-center">
+      <a [routerLink]="['/episodes', episode.id]" class="btn btn-success">View More</a>
+    </div>
+</div>

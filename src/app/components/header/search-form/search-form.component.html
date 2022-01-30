@@ -1,0 +1,15 @@
+<form class="d-flex input-group w-auto" (ngSubmit)="searchFormSubmit()">
+
+  <input
+    type="text"
+    class="form-control border border-dark"
+    placeholder="Name"
+    aria-label="Search"
+    value="Search"
+    name="searchString"
+    [(ngModel)]="searchString"
+  />
+
+  <input class="btn bg-white border border-dark ps-4 pe-4 p-0" type="submit" value="Search">
+
+</form>

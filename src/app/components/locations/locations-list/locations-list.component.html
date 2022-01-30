@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-12"></div>
+      <h1 class="text-center mt-4 mb-5 text-white">Locations</h1>
+</div>
+
+<div class="row">
+    <div class="col-6 mb-3 text-white">
+      <p>Number of locations: {{ locationsInfo.count }} | Current page: {{page}}/ {{ locationsInfo.pages }} </p>
+      <app-search-form (onFormSubmit)="filterLocations($event)"></app-search-form>
+    </div>
+    <div class="col-6 text-end mt-4">
+        <app-pagination></app-pagination>
+    </div>
+</div>
+
+<div class="row">
+    <!-- TODO: Neturime episode service, kad galetume gauti duomenis apie epizoda -->
+    <!-- Si dalis galetu buti atskiras komponentas atvaizduoti epizodams -->
+    <!-- Šiame komponente negalime pasiekti character kintamojo, turime ji perduoti per @Input
+    Dokumentacija, kaip perduoti informacija i kita komponenta parent >> child: https://angular.io/guide/inputs-outputs
+    -->
+    <div class="col-sm-4" *ngFor="let location of locations">
+        <div class="card mb-3">
+            <div class="card-header">
+            <h3> {{ location.name }} </h3> 
+            </div>
+            <div class="card-body">
+                <div>
+                    Type: {{ location.type }}
+                </div>
+                <div>
+                    Dimension: {{ location.dimension }}
+                </div>
+                <div>
+                    Residents: {{ location.residents.length }}
+                </div>
+            </div>
+            <div class="card-footer">
+                <div>
+                    <a class="btn btn-success mt-2" [routerLink]="['/locations', location.id]">
+                        View More
+                        </a> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
